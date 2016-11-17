@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/patients', 'PatientsController@getPatients');
+
+Route::get('/visits', 'VisitsController@getPendingVisits');
+
+Route::get('/visits/{date}', 'VisitsController@getVisitsOnDay');
