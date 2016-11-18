@@ -19,4 +19,3 @@ Route::get('/patients', 'PatientsController@getPatients');
 
 Route::get('/visits', 'VisitsController@getPendingVisits');
 
-Route::get('/visits/{date}', 'VisitsController@getVisitsOnDay');
