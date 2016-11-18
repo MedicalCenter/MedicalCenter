@@ -17,5 +17,5 @@ Route::get('/', function () {
 
 Route::get('/patients', 'PatientsController@getPatients');
 
-Route::get('/visits', 'VisitsController@getPendingVisits');
+Route::get('/visits/{id}', 'VisitsController@getPatientHistory');
 

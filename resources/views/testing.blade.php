@@ -24,7 +24,7 @@
         <tbody>
         @foreach ($data as $row)
         <tr>
-            <td><?php echo $row->id?></td>
+            <td><?php echo $row->price?></td>
         </tr>
         @endforeach
         </tbody>
