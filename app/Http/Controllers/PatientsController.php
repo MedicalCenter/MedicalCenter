@@ -10,7 +10,7 @@ class PatientsController extends Controller
     public function getPatients() {
 
         $patients = DB::table('patients')->get();
-        return view('testing', ['data' => $patients]);
+        return view('pages/patients', ['data' => $patients]);
     }
 
     public function getPatientById($id) {
