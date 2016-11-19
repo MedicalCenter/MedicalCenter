@@ -2,7 +2,8 @@
 
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-striped">
+            <input class="form-control" id="search" type="text" placeholder="Wyszukaj pacjenta..." >
+            <table class="table table-striped" id="table">
                 <thead>
                 <tr>
                     <th>Firstname</th>
@@ -29,6 +30,21 @@
         </div>
     </div>
 </div>
+
+
+<script>
+
+    $("#search").keyup(function(){
+        _this = this;
+        // Show only matching TR, hide rest of them
+        $.each($("#table tbody tr"), function() {
+            if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                $(this).hide();
+            else
+                $(this).show();
+        });
+    });
+</script>
 
 
 
