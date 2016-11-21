@@ -16,7 +16,7 @@ class CreatePendingVisitsTable extends Migration
         Schema::create('pending_visits', function (Blueprint $table) {
 
             $table->bigIncrements('id');
-            $table->timestamp('date_of_visit');
+            $table->string('date_of_visit');
             $table->string('hour_of_visit', 5);
             $table->string('type_visit', 30);
             $table->bigInteger('doctor_id')->unsigned();
@@ -24,6 +24,7 @@ class CreatePendingVisitsTable extends Migration
 
             $table->foreign('doctor_id')->references('id')->on('doctors');
             $table->foreign('patient_id')->references('id')->on('patients');
+            $table->timestamps();
         });
     }
 

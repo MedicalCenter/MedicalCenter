@@ -46,7 +46,7 @@
                             <label>Lekarz</label>
                             <select class="form-control" id="doctors">
                                 @foreach($doctors as $doctor)
-                                    <option>{{$doctor->first_name}} {{$doctor->last_name}}</option>
+                                    <option value="{{$doctor->id}}">{{$doctor->first_name}} {{$doctor->last_name}}</option>
                                 @endforeach
                             </select>
                             <input type="hidden" id="doctor" name="doctor">
@@ -59,8 +59,30 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Data</label>
-                            <input type="text" class="form-control" id="datepicker" name="datepicker">
+                            <div class="col-md-6"><label>Data</label>
+                                <input type="text" class="form-control" id="datepicker" name="datepicker"></div>
+                            <div class="col-md-6">   <label>Time</label>
+                                <input type="hidden" id="time" name="time" class="form-control">
+                                <select class="form-control" id="timepicker">
+                                    <option>8:00</option>
+                                    <option>8:30</option>
+                                    <option>9:00</option>
+                                    <option>9:30</option>
+                                    <option>10:00</option>
+                                    <option>10:30</option>
+                                    <option>11:00</option>
+                                    <option>11:30</option>
+                                    <option>12:00</option>
+                                    <option>12:30</option>
+                                    <option>13:00</option>
+                                    <option>13:30</option>
+                                    <option>14:00</option>
+                                    <option>14:30</option>
+                                    <option>15:00</option>
+                                    <option>15:30</option>
+                                    <option>16:00</option>
+
+                                </select></div>
 
                         </div>
 
@@ -82,9 +104,13 @@
         $( "#datepicker" ).datepicker();
     } );
 
+
+
+
     $('#form').submit(function () {
 
-        $('#doctor').val( $("#doctors option:selected").text());
+        $('#doctor').val( $("#doctors option:selected").val());
+        $('#time').val($("#timepicker option:selected").text());
 
     });
 

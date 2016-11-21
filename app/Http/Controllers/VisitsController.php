@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Pending_Visits;
+use App\Visit;
 Use DB;
 use Illuminate\Http\Request;
 
@@ -48,16 +50,25 @@ class VisitsController
 
     public function postRegisterVisit($patientId, Request $requset){
 
+        $patient = DB::table('patients')->where('id', $patientId)->first();
+        $doctors = DB::table('doctors')->get();
+
         $data = $requset->all();
 
+        $visit = new Pending_visits();
 
+        $visit->date_of_visit = $data['datepicker'];
+        $visit->hour_of_visit = $data['time'];
+        $visit->doctor_id = $data['doctor'];
+        $visit->patient_id = $patientId;
+        $visit->type_visit = $data['type'];
 
         
-        dd($data);
+        $visit->save();
 
 
 
-        return view('pages/registerVisit');
+        return view('pages/registerVisit', compact('patient','doctors'));
     }
 
 
