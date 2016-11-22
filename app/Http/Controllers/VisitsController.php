@@ -64,7 +64,7 @@ class VisitsController
         $data = $requset->all();
 
         $visit = new Pending_visits();
-
+    
         $visit->date_of_visit = $data['datepicker'];
         $visit->hour_of_visit = $data['timepicker'];
         $visit->doctor_id = $data['doctor'];

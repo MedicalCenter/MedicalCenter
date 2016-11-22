@@ -104,9 +104,6 @@
         $( "#datepicker" ).datepicker();
     } );
 
-
-
-
     $('#datepicker').change(function () {
 
         var choosenDate = $('#datepicker').val();
@@ -130,14 +127,9 @@
                    }
 
                 });
-                alert(data);
-                alert(hourArray);
-
-
-
             },
             error: function(){
-                alert('error!');
+                console.log('error')
             }
         });
     });

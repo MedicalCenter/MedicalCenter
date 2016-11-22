@@ -80,12 +80,12 @@
 
 
 
-    $('#form').submit(function () {
-
-        /*$('#doctor').val( $("#doctors option:selected").val());
-        $('#time').val($("#timepicker option:selected").text());*/
-
-    });
+//    $('#form').submit(function () {
+//
+//        /*$('#doctor').val( $("#doctors option:selected").val());
+//        $('#time').val($("#timepicker option:selected").text());*/
+//
+//    });
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Patient;
 Use DB;
+use Illuminate\Http\Request;
 
 class PatientsController extends Controller
 {
@@ -32,6 +33,7 @@ class PatientsController extends Controller
     {
         $data = $requset->all();
 
+        //dd($data);/// ZOBACZ SOBIE TO JAK NAPRAWISZ
         $patient = new Patient();
 
         $patient->first_name = $data['firstName'];
