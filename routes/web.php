@@ -27,3 +27,5 @@ Route::post('patients/{id}/register-visit', 'VisitsController@postRegisterVisit'
 
 Route::get('patients/insert', 'PatientsController@insertPatient');
 Route::post('patients/insert', 'PatientsController@postInsertPatient');
+
+Route::get('ajaxdate', 'VisitsController@ajaxDate');

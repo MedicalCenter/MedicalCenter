@@ -44,6 +44,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Lekarz</label>
+
                             <select class="form-control" id="doctors">
                                 @foreach($doctors as $doctor)
                                     <option value="{{$doctor->id}}">{{$doctor->first_name}} {{$doctor->last_name}}</option>
@@ -62,7 +63,7 @@
                             <div class="col-md-6"><label>Data</label>
                                 <input type="text" class="form-control" id="datepicker" name="datepicker"></div>
                             <div class="col-md-6">   <label>Time</label>
-                                <input type="hidden" id="time" name="time" class="form-control">
+                                <input type="hidden" id="time" name="timepicker" class="form-control">
                                 <select class="form-control" id="timepicker">
                                     <option>8:00</option>
                                     <option>8:30</option>
@@ -106,13 +107,46 @@
 
 
 
+    $('#datepicker').change(function () {
+
+        var choosenDate = $('#datepicker').val();
+        var doc = $("#doctors option:selected").val();
+
+        $.ajax({
+            url: "{{url('')}}/ajaxdate",
+            type: "GET",
+            data: { freeDate : choosenDate, doctor: doc},
+            success: function(data){
+                var hourArray = JSON.parse(data);
+
+
+                $('#timepicker> option').each(function () {
+                   for(var i=0; i<hourArray.length; i++){
+                       if(hourArray[i].hour_of_visit === $(this).text()){
+                           console.log($(this).text());
+                           console.log(hourArray[i]);
+                           $(this).attr('disabled', 'disabled');
+                       }
+                   }
+
+                });
+                alert(data);
+                alert(hourArray);
+
+
+
+            },
+            error: function(){
+                alert('error!');
+            }
+        });
+    });
     $('#form').submit(function () {
 
         $('#doctor').val( $("#doctors option:selected").val());
         $('#time').val($("#timepicker option:selected").text());
 
     });
-
 
 
 </script>

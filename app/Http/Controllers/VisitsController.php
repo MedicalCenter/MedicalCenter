@@ -66,13 +66,24 @@ class VisitsController
         $visit = new Pending_visits();
 
         $visit->date_of_visit = $data['datepicker'];
-        $visit->hour_of_visit = $data['time'];
+        $visit->hour_of_visit = $data['timepicker'];
         $visit->doctor_id = $data['doctor'];
         $visit->patient_id = $patientId;
         $visit->type_visit = $data['type'];
 
         $visit->save();
         return view('pages/registerVisit', compact('patient', 'doctors'));
+    }
+
+
+    public function ajaxDate(Request $request){
+
+        $data = $request->all();
+
+        $query = DB::table('pending_visits')->select('hour_of_visit')
+            ->where('doctor_id', $data['doctor'])->where('date_of_visit','like', $data['freeDate'])->get();
+
+        return json_encode($query);
     }
 
 
