@@ -18,7 +18,7 @@
 
                         <div class="form-group">
                             <label>Imię pacjenta</label>
-                            <input type="text" class="form-control" id="firstName" name="type">
+                            <input type="text" class="form-control" id="firstName" name="firstName">
                         </div>
 
                     </div>
@@ -27,7 +27,7 @@
 
                         <div class="form-group">
                             <label>Nazwisko pacjenta</label>
-                            <input type="text" class="form-control" id="lastName" name="type">
+                            <input type="text" class="form-control" id="lastName" name="lastName">
                         </div>
 
                     </div>
@@ -36,7 +36,7 @@
 
                         <div class="form-group">
                             <label>PESEL pacjenta</label>
-                            <input type="text" class="form-control" id="pesel" name="type">
+                            <input type="text" class="form-control" id="pesel" name="pesel">
                         </div>
 
                     </div>
@@ -45,7 +45,7 @@
 
                         <div class="form-group">
                             <label>Data urodzenia</label>
-                            <input type="text" class="form-control" id="datepicker" name="type">
+                            <input type="text" class="form-control" id="datepicker" name="datepicker">
                         </div>
 
                     </div>
@@ -55,7 +55,7 @@
 
                         <div class="form-group">
                             <label>Adres pacjenta</label>
-                            <input type="text" class="form-control" id="address" name="type">
+                            <input type="text" class="form-control" id="address" name="address">
                         </div>
 
                     </div>

@@ -39,12 +39,14 @@ class PatientsController extends Controller
         $patient->first_name = $data['firstName'];
         $patient->last_name = $data['lastName'];
         $patient->pesel = $data['pesel'];
-        $patient->birth_date = $data['datepicker'];
+        $patient->date_of_birth = $data['datepicker'];
         $patient->address = $data['address'];
 
         $patient->save();
 
-        return view('pages/patients');
+
+        $patients = DB::table('patients')->get();
+        return view('pages/patients', ['data' => $patients]);
     }
 
 }
