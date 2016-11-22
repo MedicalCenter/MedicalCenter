@@ -81,7 +81,6 @@
                                     <option>15:00</option>
                                     <option>15:30</option>
                                     <option>16:00</option>
-
                                 </select></div>
 
                         </div>
