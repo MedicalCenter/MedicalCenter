@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Patient;
 use App\Pending_Visits;
 use App\Visit;
 Use DB;
@@ -51,12 +52,12 @@ class VisitsController
 
     public function removePendingVisit($visitId) {
 
-        $patientId = DB::table('pending_visits')->where('id', $visitId)->select('pending_visits.patient_Id')->get();
+
         $visit = Pending_visits::find($visitId);
+        $patient = Patient::find($visit->patient_id);
         $visit->delete();
 
-        $patient = DB::table('patients')->where('id', $patientId)->first();
-        $visits = DB::table('pending_visits')->where('patient_Id', $patientId)
+        $visits = DB::table('pending_visits')->where('patient_Id', $patient->id)
             ->join('doctors', 'pending_visits.doctor_id', '=', 'doctors.id')
             ->select('pending_visits.*', 'doctors.first_name', 'doctors.last_name')->get();
         return view('pages/pendingVisits', compact('visits', 'patient'));
