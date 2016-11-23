@@ -58,7 +58,7 @@
                                 <td>{{$visit->hour_of_visit}}</td>
                                 <td>{{$visit->type_visit}}</td>
                                 <td>{{$visit->first_name}} {{$visit->last_name}}</td>
-                                <td><a href="{{url('')}}/patients/{{$patient->id}}/register-visit" class="btn btn-default">Odwołaj wizytę</a></td>
+                                <td><a href="{{url('')}}/patients/{{$visit->id}}/remove-visit" class="btn btn-default">Odwołaj wizytę</a></td>
                             </tr>
                         @endforeach
                         </tbody>

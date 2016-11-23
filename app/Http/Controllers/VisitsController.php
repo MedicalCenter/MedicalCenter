@@ -49,6 +49,20 @@ class VisitsController
 
     }
 
+    public function removePendingVisit($visitId) {
+
+        $patientId = DB::table('pending_visits')->where('id', $visitId)->select('pending_visits.patient_Id')->get();
+        $visit = Pending_visits::find($visitId);
+        $visit->delete();
+
+        $patient = DB::table('patients')->where('id', $patientId)->first();
+        $visits = DB::table('pending_visits')->where('patient_Id', $patientId)
+            ->join('doctors', 'pending_visits.doctor_id', '=', 'doctors.id')
+            ->select('pending_visits.*', 'doctors.first_name', 'doctors.last_name')->get();
+        return view('pages/pendingVisits', compact('visits', 'patient'));
+
+    }
+
 
     public function ajaxDate(Request $request){
 
