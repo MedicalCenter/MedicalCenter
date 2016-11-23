@@ -12,6 +12,7 @@
                     <th>Birth</th>
                     <th>Address</th>
                     <th>Wizyta</th>
+                    <th>Zaplanowane wizyty</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -23,6 +24,7 @@
                         <td>{{$patient->date_of_birth}}</td>
                         <td>{{$patient->address}}</td>
                         <td><a href="{{url('')}}/patients/{{$patient->id}}/register-visit" class="btn btn-default">Umów wizytę</a> </td>
+                        <td><a href="{{url('')}}/patients/{{$patient->id}}/pending-visit" class="btn btn-default">Zaplanowane wizyty</a></td>
                     </tr>
                 @endforeach
                 </tbody>

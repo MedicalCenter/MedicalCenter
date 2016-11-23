@@ -29,3 +29,9 @@ Route::get('patients/insert', 'PatientsController@insertPatient');
 Route::post('patients/insert', 'PatientsController@postInsertPatient');
 
 Route::get('ajaxdate', 'VisitsController@ajaxDate');
+
+Route::get('patients/unregister', 'PatientsController@unregisterPatient');
+Route::get('patients/unregister', 'PatientsController@postUnregisterPatient');
+
+Route::get('patients/{id}/pending-visit', 'VisitsController@pendingVisits');
+Route::get('patients/{id}/remove-visit', 'VisitsController@removePendingVisit');

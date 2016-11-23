@@ -9,43 +9,7 @@ use Illuminate\Http\Request;
 
 class VisitsController
 {
-
-    public function getPendingVisits()
-    {
-        $pending = DB::table('pending_visits')->get();
-        return view('testing', ['data' => $pending]);
-    }
-
-    public function getPendingVisitsOnDay($data)
-    {
-        $pending = DB::table('pending_visits')->where('date_of_visit', $data)->get();
-        return view('testing', ['data' => $pending]);
-    }
-
-    public function getPendingVisitsOnDayForDoctor($date, $doctorId)
-    {
-        $pending = DB::table('pending_visits')->where([
-            ['doctor_id', $doctorId],
-            ['date_of_visit', $date]
-        ])->get();
-
-        return view('testing', ['data' => $pending]);
-    }
-
-    public function getPendingVisitsForPatient($patientId)
-    {
-        $pending = DB::table('pending_visits')->where('patient_id', $patientId)->get();
-        return view('testing', ['data' => $pending]);
-    }
-
-    public function getPatientHistory($patientId)
-    {
-        $history = DB::table('visits')->where('patient_id', $patientId)->get();
-        return view('testing', ['data' => $history]);
-    }
-
-
-    public function registerVisit($patientId)
+   public function registerVisit($patientId)
     {
 
         $patient = DB::table('patients')->where('id', $patientId)->first();
@@ -55,13 +19,13 @@ class VisitsController
     }
 
 
-    public function postRegisterVisit($patientId, Request $requset)
+    public function postRegisterVisit($patientId, Request $request)
     {
 
         $patient = DB::table('patients')->where('id', $patientId)->first();
         $doctors = DB::table('doctors')->get();
 
-        $data = $requset->all();
+        $data = $request->all();
 
         $visit = new Pending_visits();
     
@@ -73,6 +37,16 @@ class VisitsController
 
         $visit->save();
         return view('pages/registerVisit', compact('patient', 'doctors'));
+    }
+
+    public function pendingVisits($patientId) {
+
+        $patient = DB::table('patients')->where('id', $patientId)->first();
+        $visits = DB::table('pending_visits')->where('patient_Id', $patientId)
+            ->join('doctors', 'pending_visits.doctor_id', '=', 'doctors.id')
+            ->select('pending_visits.*', 'doctors.first_name', 'doctors.last_name')->get();
+        return view('pages/pendingVisits', compact('visits', 'patient'));
+
     }
 
 

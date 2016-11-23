@@ -29,9 +29,9 @@ class PatientsController extends Controller
         return view('pages/patientInsert');
     }
 
-    public function postInsertPatient(Request $requset)
+    public function postInsertPatient(Request $request)
     {
-        $data = $requset->all();
+        $data = $request->all();
 
         //dd($data);/// ZOBACZ SOBIE TO JAK NAPRAWISZ
         $patient = new Patient();
@@ -47,6 +47,20 @@ class PatientsController extends Controller
 
         $patients = DB::table('patients')->get();
         return view('pages/patients', ['data' => $patients]);
+    }
+
+    public function unregisterPatient() {
+        return view('pages/removeVisit', ['data' => []]);
+    }
+
+    public function postUnregisterPatient(Request $request) {
+        $data = $request->all();
+
+        $lastName = $data['lastName'];
+        $patient = DB::table('patients')->where('last_name', $lastName)->get();
+        $pendingVisits = DB::table('pending_visits')->where('patient_id', $patient->id);
+
+        return view('pages/removeVisit', ['data' => $pendingVisits]);
     }
 
 }
