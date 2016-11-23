@@ -130,7 +130,7 @@
                                                    </div>
                                                    <div class="col-md-12">
                                                        <div class="text-center">
-                                                           <button type="submit" class="btn btn-default text-center">Umów wizytę</button>
+                                                           <button type="submit" class="btn btn-default text-center">Edytujwizytę</button>
                                                        </div>
                                                    </div>
                                                 <input hidden value="{{$visit->id}}" name="visitId" id="visitId">
@@ -138,7 +138,7 @@
                                            </div>
 
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
                                         </div>
                                     </div>
 
