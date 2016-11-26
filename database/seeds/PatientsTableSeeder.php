@@ -18,7 +18,7 @@ class PatientsTableSeeder extends Seeder
             'first_name' => 'Magdalena',
             'last_name' => 'Wujczyk',
             'pesel' => 89021099120,
-            'date_of_birth' =>  date("Y-m-d", strtotime("10 February 1989"))->format('Y-m-d'),
+            'date_of_birth' =>  date("Y-m-d", strtotime("10 February 1989")),
             'address' => 'Paderewskiego 2/2, 56-400 Olesnica',
         ]);
 
@@ -26,7 +26,7 @@ class PatientsTableSeeder extends Seeder
             'first_name' => 'Michał',
             'last_name' => 'Wawrzyniak',
             'pesel' => 85111399120,
-            'date_of_birth' =>  date("Y-m-d", strtotime("13 November 1985"))->format('Y-m-d'),
+            'date_of_birth' =>  date("Y-m-d", strtotime("13 November 1985")),
             'address' => 'Paderewskiego 2/3, 56-400 Olesnica',
         ]);
     }

@@ -18,8 +18,9 @@ class CreatePatientsTable extends Migration
             $table->string('first_name', 30);
             $table->string('last_name', 30);
             $table->bigInteger('pesel');
-            $table->timestamp('date_of_birth');
+            $table->string('date_of_birth');
             $table->string('address', 100);
+            $table->timestamps();
         });
     }
 

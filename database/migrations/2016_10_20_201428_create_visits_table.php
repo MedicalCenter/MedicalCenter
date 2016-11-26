@@ -18,14 +18,15 @@ class CreateVisitsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamp('date_of_visit');
             $table->string('hour_of_visit', 5);
-            $table->decimal('price');
-            $table->string('diagnosis', 30);
+            $table->decimal('price')->default(0);
+            $table->string('diagnosis', 30)->default("Zdychaj dziadu");
             $table->string('type', 30);
             $table->bigInteger('doctor_id')->unsigned();
             $table->bigInteger('patient_id')->unsigned();
 
             $table->foreign('doctor_id')->references('id')->on('doctors');
             $table->foreign('patient_id')->references('id')->on('patients');
+            $table->timestamps();
         });
     }
 
