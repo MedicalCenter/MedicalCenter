@@ -19,3 +19,7 @@ Route::get('/patients', 'PatientsController@getPatients');
 
 Route::get('/visits/{id}', 'VisitsController@getPatientHistory');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
