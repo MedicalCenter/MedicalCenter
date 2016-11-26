@@ -1,7 +1,17 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Michal Czarnecki
- * Date: 26.11.2016
- * Time: 20:54
- */
+@extends('layouts.app')
+
+@section('title')
+    Logowanie
+@stop
+
+@section('header')
+    @include('containers.loginHeader')
+@stop
+
+@section('content')
+    @include('auth.login')
+@stop
+
+@section('footer')
+    @include('containers.footer')
+@stop

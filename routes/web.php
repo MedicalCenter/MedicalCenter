@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('pages/mainPage');
+    return view('pages/login');
 });
 
 Route::get('/patients', 'PatientsController@getPatients');

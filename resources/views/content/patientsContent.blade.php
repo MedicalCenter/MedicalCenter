@@ -1,3 +1,9 @@
+$user = Auth::user();
+
+@if($user->role == '3') {
+    redirect('pages/main');
+}
+
 <div class="container">
 
     <div class="row">
