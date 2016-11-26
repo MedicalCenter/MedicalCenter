@@ -6,11 +6,11 @@
             <table class="table table-striped" id="table">
                 <thead>
                 <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
                     <th>PESEL</th>
-                    <th>Birth</th>
-                    <th>Address</th>
+                    <th>Data urodzenia</th>
+                    <th>Adres</th>
                     <th>Wizyta</th>
                     <th>Zaplanowane wizyty</th>
                 </tr>

@@ -16,11 +16,11 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
+                            <th>Imię</th>
+                            <th>Nazwisko</th>
                             <th>PESEL</th>
-                            <th>Birth</th>
-                            <th>Address</th>
+                            <th>Data urodzenia</th>
+                            <th>Adres</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <div class="col-md-6"><label>Data</label>
                                 <input type="text" class="form-control" id="datepicker" name="datepicker"></div>
-                            <div class="col-md-6"><label>Time</label>
+                            <div class="col-md-6"><label>Godzina wizyty</label>
                                 <input type="hidden" id="time" name="timepicker" class="form-control">
                                 <select class="form-control" id="timepicker">
                                     <option>8:00</option>
