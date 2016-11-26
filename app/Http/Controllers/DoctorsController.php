@@ -14,11 +14,11 @@ class DoctorsController extends Controller
 {
     public function getDoctors() {
         $data = DB::table('doctors')->get();
-        return view('testing', ['data' => $data]);
+        return view('pages/doctors', ['data' => $data]);
     }
 
     public function getDoctorById($id) {
-        $data = DB::table('doctors')->where('id', $id)->get();
+        $data = DB::table('doctors')->where('id', $id)->first();
         return view('testing', ['data' => $data]);
     }
 
