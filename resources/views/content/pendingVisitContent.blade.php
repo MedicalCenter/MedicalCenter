@@ -1,11 +1,18 @@
-@if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+@if(isset($message))
+    <div class="alert alert-success text-center" style="font-size: 22px; margin-top: 20px">
+        {{$message}}
     </div>
+@endif
+@if(isset($errors))
+    @if (count($errors) > 0)
+        <div class="alert alert-danger text-center" style="font-size: 16px; margin-top: 20px">
+
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>
+            @endforeach
+
+        </div>
+    @endif
 @endif
 <div class="container">
 
@@ -59,7 +66,7 @@
                                 <td>{{$visit->hour_of_visit}}</td>
                                 <td>{{$visit->type_visit}}</td>
                                 <td>{{$visit->first_name}} {{$visit->last_name}}</td>
-                                <td><a href="{{url('')}}/patients/{{$visit->id}}/remove-visit" class="btn btn-default">Odwołaj
+                                <td><a href="{{url('')}}/patients/{{$visit->id}}/remove-visit" onclick="return confirm('Czy napewno chce odwołać wizytę?');" class="btn btn-default">Odwołaj
                                         wizytę</a></td>
                                 <td>
                                     <button data-toggle="modal" data-target="#edit{{$visit->id}}" class="btn btn-default">Edytuj
@@ -130,7 +137,7 @@
                                                    </div>
                                                    <div class="col-md-12">
                                                        <div class="text-center">
-                                                           <button type="submit" class="btn btn-default text-center">Edytujwizytę</button>
+                                                           <button type="submit" onclick="return confirm('Czy napewno chcesz edytować wizytę?');" class="btn btn-default text-center">Edytuj wizytę</button>
                                                        </div>
                                                    </div>
                                                 <input hidden value="{{$visit->id}}" name="visitId" id="visitId">

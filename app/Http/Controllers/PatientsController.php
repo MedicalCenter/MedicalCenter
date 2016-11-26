@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Patient;
 Use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PatientsController extends Controller
 {
@@ -31,7 +32,37 @@ class PatientsController extends Controller
 
     public function postInsertPatient(Request $request)
     {
+        $patients = DB::table('patients')->get();
         $data = $request->all();
+
+//        dd($data);
+        $validator = Validator::make($request->all(), [
+            'firstName' => 'required|min:3|max:30',
+            'lastName' => 'required|min:3|max:30',
+            'pesel' => 'required|min:11|max:11',
+            'datepicker' => 'required',
+            'address' => 'required|max:30'
+        ],
+            [
+                'firstName.required' => 'Imię jest wymagane',
+                'firstName.min' => 'Imię wymaga minimalnie 3 liter',
+                'firstName.max' => 'Imię maksymalnie 30 liter',
+                'lastName.required' => 'Nazwisko jest wymagane',
+                'lastName.min' => 'Nazwisko wymaga minimalnie 3 liter',
+                'lastName.max' => 'Nazwisko maksymalnie 30 liter',
+                'pesel.required' => 'Pesel jest wymagany',
+                'pesel.min' => 'Pesel 11 powinien zawierać cyfr',
+                'pesel.max' => 'Pesel 11 powinien zawierać cyfr',
+                'datepicker.required' => 'Podanie daty wizyty jest wymagane',
+                'address.required' => 'Podanie adresu jest wymagane',
+                 'address.max' => 'Maksymalna liczba liter adresu to 30'
+            ]
+        );
+        if ($validator->fails()) {
+            return view('pages/patientInsert', ['data' => $patients])
+                ->withErrors($validator);
+        }
+
 
         //dd($data);/// ZOBACZ SOBIE TO JAK NAPRAWISZ
         $patient = new Patient();
@@ -45,8 +76,8 @@ class PatientsController extends Controller
         $patient->save();
 
 
-        $patients = DB::table('patients')->get();
-        return view('pages/patients', ['data' => $patients]);
+
+        return view('pages/patients', ['data' => $patients])->with(["message" => "Dodano pacjenta!"]);
     }
 
     public function unregisterPatient() {

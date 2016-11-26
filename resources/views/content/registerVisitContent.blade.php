@@ -1,11 +1,18 @@
-@if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+@if(isset($message))
+    <div class="alert alert-success text-center" style="font-size: 22px; margin-top: 20px">
+        {{$message}}
     </div>
+@endif
+@if(isset($errors))
+    @if (count($errors) > 0)
+        <div class="alert alert-danger text-center" style="font-size: 16px; margin-top: 20px">
+
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>
+            @endforeach
+
+        </div>
+    @endif
 @endif
 <div class="container">
     <div class="row">
@@ -89,7 +96,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="text-center">
-                            <button type="submit" class="btn btn-default text-center">Umów wizytę</button>
+                            <button type="submit" onclick="return confirm('Czy na pewno chcesz umówić wizytę?');" class="btn btn-default text-center">Umów wizytę</button>
                         </div>
                     </div>
 

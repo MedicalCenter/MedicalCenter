@@ -1,11 +1,18 @@
-@if (count($errors) > 0)
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
+@if(isset($message))
+    <div class="alert alert-success text-center" style="font-size: 22px; margin-top: 20px">
+        {{$message}}
+    </div>
+@endif
+@if(isset($errors))
+    @if (count($errors) > 0)
+        <div class="alert alert-danger text-center" style="font-size: 16px; margin-top: 20px">
+
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>
+            @endforeach
+
+        </div>
+    @endif
 @endif
 <div class="container">
     <div class="row">
