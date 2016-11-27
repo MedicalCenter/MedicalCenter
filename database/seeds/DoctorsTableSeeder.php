@@ -6,6 +6,7 @@ class DoctorsTableSeeder extends Seeder
 {
     public function run()
     {
+
         DB::table('Doctors')->insert([
             'first_name' => 'Jan',
             'last_name' => 'Kowalski',
