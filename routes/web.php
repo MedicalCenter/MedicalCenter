@@ -15,28 +15,34 @@ Route::get('/', function () {
     return view('pages/login');
 });
 
-Route::get('/patients', 'PatientsController@getPatients');
+Route::get('/mainPage', function() {
+    return view('pages/mainPage');
+})->middleware('auth');
 
-Route::get('/visits/{id}', 'VisitsController@getPatientHistory');
+Route::get('/patients', 'PatientsController@getPatients')->middleware('auth');
 
-Route::get('/doctors', 'DoctorsController@getDoctors');
+Route::get('/visits/{id}', 'VisitsController@getPatientHistory')->middleware('auth');
+
+Route::get('/doctors', 'DoctorsController@getDoctors')->middleware('auth');
 
 
-Route::get('patients/{id}/register-visit', 'VisitsController@registerVisit');
-Route::post('patients/{id}/register-visit', 'VisitsController@postRegisterVisit');
+Route::get('patients/{id}/register-visit', 'VisitsController@registerVisit')->middleware('auth');
+Route::post('patients/{id}/register-visit', 'VisitsController@postRegisterVisit')->middleware('auth');
 
-Route::get('patients/insert', 'PatientsController@insertPatient');
-Route::post('patients/insert', 'PatientsController@postInsertPatient');
-Route::post('patients/{id}/edit-visit', 'VisitsController@editVisit');
+Route::get('patients/insert', 'PatientsController@insertPatient')->middleware('auth');
+Route::post('patients/insert', 'PatientsController@postInsertPatient')->middleware('auth');
+Route::post('patients/{id}/edit-visit', 'VisitsController@editVisit')->middleware('auth');
 
 Route::get('ajaxdate', 'VisitsController@ajaxDate');
 
-Route::get('patients/unregister', 'PatientsController@unregisterPatient');
-Route::get('patients/unregister', 'PatientsController@postUnregisterPatient');
+Route::get('patients/unregister', 'PatientsController@unregisterPatient')->middleware('auth');
+Route::get('patients/unregister', 'PatientsController@postUnregisterPatient')->middleware('auth');
 
-Route::get('patients/{id}/pending-visit', 'VisitsController@pendingVisits');
-Route::get('patients/{id}/remove-visit', 'VisitsController@removePendingVisit');
+Route::get('patients/{id}/pending-visit', 'VisitsController@pendingVisits')->middleware('auth');
+Route::get('patients/{id}/remove-visit', 'VisitsController@removePendingVisit')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', function() {
+    return view('pages/mainPage');
+})->middleware('auth');

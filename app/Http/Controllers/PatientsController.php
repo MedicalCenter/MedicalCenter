@@ -3,64 +3,91 @@
 namespace App\Http\Controllers;
 
 use App\Patient;
-Use DB;
+use Auth;
+use DB;
 use Illuminate\Http\Request;
 
 class PatientsController extends Controller
 {
 
-    public function getPatients() {
+    public function getPatients()
+    {
 
-        $patients = DB::table('patients')->get();
-        return view('pages/patients', ['data' => $patients]);
+        $user = Auth::user();
+
+        if ($user->role == '2') {
+            $patients = DB::table('patients')->get();
+            return view('pages/patients', ['data' => $patients]);
+        } else {
+            return redirect('/mainPage');
+        }
     }
 
-    public function getPatientById($id) {
-        $patients = DB::table('patients')->where('id', $id)->get();
-        return view('testing', ['data' => $patients]);
-    }
+    public function insertPatient()
+    {
+        $user = Auth::user();
 
-    public function getPatientByPesel($pesel) {
-        $patients = DB::table('patients')->where('pesel', $pesel)->get();
-        return view('testing', ['data' => $patients]);
-    }
-
-    public function insertPatient() {
-        return view('pages/patientInsert');
+        if ($user->role == '2') {
+            return view('pages/patientInsert');
+        } else {
+            return redirect('/mainPage');
+        }
     }
 
     public function postInsertPatient(Request $request)
     {
-        $data = $request->all();
+        $user = Auth::user();
 
-        //dd($data);/// ZOBACZ SOBIE TO JAK NAPRAWISZ
-        $patient = new Patient();
+        if ($user->role == '2') {
+            $data = $request->all();
 
-        $patient->first_name = $data['firstName'];
-        $patient->last_name = $data['lastName'];
-        $patient->pesel = $data['pesel'];
-        $patient->date_of_birth = $data['datepicker'];
-        $patient->address = $data['address'];
+            //dd($data);/// ZOBACZ SOBIE TO JAK NAPRAWISZ
+            $patient = new Patient();
 
-        $patient->save();
+            $patient->first_name = $data['firstName'];
+            $patient->last_name = $data['lastName'];
+            $patient->pesel = $data['pesel'];
+            $patient->date_of_birth = $data['datepicker'];
+            $patient->address = $data['address'];
+
+            $patient->save();
 
 
-        $patients = DB::table('patients')->get();
-        return view('pages/patients', ['data' => $patients]);
+            $patients = DB::table('patients')->get();
+            return view('pages/patients', ['data' => $patients]);
+        } else {
+            return redirect('/mainPage');
+        }
     }
 
-    public function unregisterPatient() {
-        return view('pages/removeVisit', ['data' => []]);
+    public function unregisterPatient()
+    {
+
+        $user = Auth::user();
+
+        if ($user->role == '2') {
+            return view('pages/removeVisit', ['data' => []]);
+        } else {
+            return redirect('/mainPage');
+        }
     }
 
-    public function postUnregisterPatient(Request $request) {
-        $data = $request->all();
+    public function postUnregisterPatient(Request $request)
+    {
 
-        $lastName = $data['lastName'];
-        $patient = DB::table('patients')->where('last_name', $lastName)->get();
-        $pendingVisits = DB::table('pending_visits')->where('patient_id', $patient->id);
+        $user = Auth::user();
 
-        return view('pages/removeVisit', ['data' => $pendingVisits]);
+        if ($user->role == '2') {
+            $data = $request->all();
+
+            $lastName = $data['lastName'];
+            $patient = DB::table('patients')->where('last_name', $lastName)->get();
+            $pendingVisits = DB::table('pending_visits')->where('patient_id', $patient->id);
+
+            return view('pages/removeVisit', ['data' => $pendingVisits]);
+        } else {
+            return redirect('/mainPage');
+        }
     }
 
 }
