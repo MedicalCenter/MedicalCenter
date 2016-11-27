@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{url('/')}}">Medical Center</a>
+            <a class="navbar-brand" href="{{ url('/mainPage') }}">Medical Center</a>
         </div>
         <ul class="nav navbar-nav">
             <li><a href="{{ url('/mainPage') }}">Strona główna</a></li>
@@ -12,9 +12,9 @@
         <ul class="nav navbar-nav navbar-right">
             <!-- Authentication Links -->
             @if (!Auth::guest())
-                <li class="dropdown">
+                <li>
                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                        {{ Auth::user()->username }} <span class="caret"></span>
                     </a>
 
                     <ul class="dropdown-menu" role="menu">
