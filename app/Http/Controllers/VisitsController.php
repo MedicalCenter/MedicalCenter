@@ -175,7 +175,18 @@ class VisitsController
         } else {
             return redirect('/mainPage');
         }
-
     }
+
+    public function listVisitDetails($visitId) {
+        $user = Auth::user();
+
+        if ($user->role == '3') {
+            $history = DB::table('visits')->where('id', $visitId)->get();
+            return view('pages/visitDetails', ['data' => $history]);
+        } else {
+            return redirect('/mainPage');
+        }
+    }
+
 
 }

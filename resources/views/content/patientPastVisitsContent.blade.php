@@ -7,6 +7,7 @@
                     <th>Doktor</th>
                     <th>Data</th>
                     <th>Godzina</th>
+                    <th>Szczegóły wizyty</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -15,6 +16,7 @@
                         <td>{{$var->first_name}} {{$var->last_name}}</td>
                         <td>{{$var->date_of_visit}}</td>
                         <td>{{$var->hour_of_visit}}</td>
+                        <td><a href="{{url('/doctors')}}/visits/{{$var->patient_id}}/viewHistory/{{$var->id}}" class="btn btn-default">Szczegóły</a> </td>
                     </tr>
                 @endforeach
                 </tbody>

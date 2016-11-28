@@ -6,7 +6,8 @@
                 <tr>
                     <th>Pacjent</th>
                     <th>Godzina</th>
-                    <th>Szczegóły</th>
+                    <th>Historia wizyt</th>
+                    <th>Zakończ wizytę</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -15,6 +16,7 @@
                     <td>{{$var->first_name}} {{$var->last_name}}</td>
                     <td>{{$var->hour_of_visit}}</td>
                     <td><a href="{{url('/doctors')}}/visits/{{$var->patient_id}}/viewHistory" class="btn btn-default">Historia wizyt</a> </td>
+                    <td><a href="{{url('/doctors')}}/visits/{{$var->patient_id}}/viewHistory" class="btn btn-default">Zakończ wizytę</a> </td>
                 </tr>
                 @endforeach
                 </tbody>

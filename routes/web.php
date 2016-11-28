@@ -25,7 +25,7 @@ Route::get('/visits/{id}', 'VisitsController@getPatientHistory')->middleware('au
 
 Route::get('/doctors/visits', 'VisitsController@listDoctorVisitsForToday')->middleware('auth');
 Route::get('/doctors/visits/{id}/viewHistory', 'VisitsController@listPatientVisitsHistory')->middleware('auth');
-
+Route::get('/doctors/visits/{id}/viewHistory/{vid}', 'VisitsController@listVisitDetails')->middleware('auth');
 
 Route::get('patients/{id}/register-visit', 'VisitsController@registerVisit')->middleware('auth');
 Route::post('patients/{id}/register-visit', 'VisitsController@postRegisterVisit')->middleware('auth');
