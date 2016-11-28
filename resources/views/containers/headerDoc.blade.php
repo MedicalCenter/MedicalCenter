@@ -5,9 +5,7 @@
         </div>
         <ul class="nav navbar-nav">
             <li><a href="{{ url('/mainPage') }}">Strona główna</a></li>
-            <li><a href="{{url('/patients')}}">Zarządzanie pacjentami</a></li>
-            <li><a href="{{url('/patients/insert')}}">Dodawanie pacjenta</a></li>
-
+            <li><a href="{{url('/doctors/visits')}}">Dzisiejsze wizyty</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
@@ -35,5 +33,5 @@
             @endif
         </ul>
 
-     </div>
+    </div>
 </nav>

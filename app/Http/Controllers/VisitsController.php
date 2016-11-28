@@ -156,6 +156,9 @@ class VisitsController
             $visits = DB::table('pending_visits')->where('doctor_id', $doctorId)->where('date_of_visit', $date)
                 ->join('patients', 'pending_visits.patient_id', '=', 'patients.id')
                 ->select('pending_visits.*', 'patients.first_name', 'patients.last_name')->get();
+
+//            dd($visits);
+
             return view('pages/doctorsVisits', ['data' => $visits]);
         } else {
             return redirect('/mainPage');
@@ -181,11 +184,39 @@ class VisitsController
         $user = Auth::user();
 
         if ($user->role == '3') {
-            $history = DB::table('visits')->where('id', $visitId)->get();
+            $history = DB::table('visits')->where('id', $visitId)->first();
             return view('pages/visitDetails', ['data' => $history]);
         } else {
             return redirect('/mainPage');
         }
+    }
+    
+    public function endVisit(Request $request, $id){
+
+        $data = $request->all();
+        
+        $pendingVisit = Pending_Visits::find($id);
+
+        $pendingVisit->delete();
+
+        $visit = new Visit();
+        $visit->date_of_visit = $data['date'];
+        $visit->hour_of_visit = $data['hour'];
+        $visit->price = $data['price'];
+        $visit->diagnosis = $data['diagnosis'];
+        $visit->type = $data['type'];
+        $visit->doctor_id= $data['doctor_id'];
+        $visit->patient_id = $data['patient_id'];
+
+        $visit->save();
+
+
+
+        return redirect('/doctors/visits');
+
+
+
+
     }
 
 

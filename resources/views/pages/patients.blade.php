@@ -9,7 +9,12 @@
 @stop
 
 @section('header')
-    @include('containers.header')
+    <?php $user = Auth::user()?>
+    @if($user->role == '3')
+        @include('containers.headerDoc')
+    @elseif ($user->role == '2')
+        @include('containers.header')
+    @endif
 @stop
 
 @section('content')
