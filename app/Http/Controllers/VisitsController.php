@@ -146,4 +146,36 @@ class VisitsController
     }
 
 
+    public function listDoctorVisitsForToday()
+    {
+        $user = Auth::user();
+
+        if ($user->role == '3') {
+            $doctorId = $user->doctorId;
+            $date = date('m/d/Y', time());
+            $visits = DB::table('pending_visits')->where('doctor_id', $doctorId)->where('date_of_visit', $date)
+                ->join('patients', 'pending_visits.patient_id', '=', 'patients.id')
+                ->select('pending_visits.*', 'patients.first_name', 'patients.last_name')->get();
+            return view('pages/doctorsVisits', ['data' => $visits]);
+        } else {
+            return redirect('/mainPage');
+        }
+    }
+
+    public function listPatientVisitsHistory($patientId)
+    {
+
+        $user = Auth::user();
+
+        if ($user->role == '3') {
+            $history = DB::table('visits')->where('patient_id', $patientId)
+                ->join('doctors', 'visits.doctor_id', '=', 'doctors.id')
+                ->select('visits.*', 'doctors.first_name', 'doctors.last_name')->orderBy('id', 'desc')->get();
+            return view('pages/patientPastVisits', ['data' => $history]);
+        } else {
+            return redirect('/mainPage');
+        }
+
+    }
+
 }

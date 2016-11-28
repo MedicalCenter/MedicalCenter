@@ -22,6 +22,7 @@ class UsersTableSeeder extends Seeder
             'username' => 'doc',
             'password' => Hash::make('secret'),
             'role' => '3',
+            'doctorId' => '1',
         ]);
     }
 }

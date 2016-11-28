@@ -16,7 +16,7 @@ class CreateVisitsTable extends Migration
         Schema::create('visits', function (Blueprint $table) {
 
             $table->bigIncrements('id');
-            $table->timestamp('date_of_visit');
+            $table->string('date_of_visit');
             $table->string('hour_of_visit', 5);
             $table->decimal('price')->default(0);
             $table->string('diagnosis', 30)->default("Zdychaj dziadu");

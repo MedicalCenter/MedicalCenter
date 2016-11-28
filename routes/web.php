@@ -23,7 +23,8 @@ Route::get('/patients', 'PatientsController@getPatients')->middleware('auth');
 
 Route::get('/visits/{id}', 'VisitsController@getPatientHistory')->middleware('auth');
 
-Route::get('/doctors', 'DoctorsController@getDoctors')->middleware('auth');
+Route::get('/doctors/visits', 'VisitsController@listDoctorVisitsForToday')->middleware('auth');
+Route::get('/doctors/visits/{id}/viewHistory', 'VisitsController@listPatientVisitsHistory')->middleware('auth');
 
 
 Route::get('patients/{id}/register-visit', 'VisitsController@registerVisit')->middleware('auth');
