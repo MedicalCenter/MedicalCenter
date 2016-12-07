@@ -49,7 +49,7 @@
                 <form action="{{url('')}}/patients/{{$patient->id}}/register-visit" method="POST" id="form">
                     {{ csrf_field() }}
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group" style="margin-top: 20px">
                             <label>Lekarz</label>
 
                             <select class="form-control" id="doctors">
@@ -67,9 +67,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <div class="col-md-6"><label>Data</label>
+                            <div class="col-md-6" style="margin-top: 20px"><label>Data</label>
                                 <input type="text" class="form-control" id="datepicker" name="datepicker"></div>
-                            <div class="col-md-6"><label>Godzina wizyty</label>
+                            <div class="col-md-6" style="margin-top: 20px"><label>Godzina wizyty</label>
                                 <input type="hidden" id="time" name="timepicker" class="form-control">
                                 <select class="form-control" id="timepicker">
                                     <option>8:00</option>
@@ -95,7 +95,7 @@
 
                     </div>
                     <div class="col-md-12">
-                        <div class="text-center">
+                        <div class="text-center" style="margin-top: 10px">
                             <button type="submit" onclick="return confirm('Czy na pewno chcesz umówić wizytę?');" class="btn btn-default text-center">Umów wizytę</button>
                         </div>
                     </div>

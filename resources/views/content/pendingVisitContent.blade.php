@@ -48,7 +48,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <table class="table table-striped">
+                    <table class="table table-striped" style="margin-top: 20px">
                         <thead>
                         <tr>
                             <th>Data wizyty</th>

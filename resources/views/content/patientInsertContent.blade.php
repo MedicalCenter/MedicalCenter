@@ -17,13 +17,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="row">
+            <div class="row" style="margin-bottom: 20px">
                 <h2>Dodaj pacjenta</h2>
                 <form action="{{url('')}}/patients/insert" method="POST" id="form">
                     {{ csrf_field() }}
                     <div class="col-md-6">
 
-                        <div class="form-group">
+                        <div class="form-group" style="margin-top: 20px">
                             <label>Imię pacjenta</label>
                             <input type="text" class="form-control" id="firstName" name="firstName">
                         </div>
@@ -32,7 +32,7 @@
 
                     <div class="col-md-6">
 
-                        <div class="form-group">
+                        <div class="form-group" style="margin-top: 20px">
                             <label>Nazwisko pacjenta</label>
                             <input type="text" class="form-control" id="lastName" name="lastName">
                         </div>
@@ -68,7 +68,7 @@
                     </div>
 
                     <div class="col-md-12">
-                        <div class="text-center">
+                        <div class="text-center" style="margin-top: 20px">
                             <button type="submit" class="btn btn-default">Dodaj pacjenta</button>
                         </div>
                     </div>
