@@ -17,9 +17,9 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-12">
-            <input class="form-control" id="search" type="text" placeholder="Wyszukaj pacjenta..." >
-            <table class="table table-striped" id="table">
+        <div class="col-md-12" >
+            <input class="form-control" id="search" type="text" placeholder="Wyszukaj pacjenta..." style="margin-top: 10px">
+            <table class="table table-striped" id="table" style="margin-top: 30px" >
                 <thead>
                 <tr>
                     <th>Imię</th>
